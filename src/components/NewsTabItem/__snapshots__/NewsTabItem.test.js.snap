@@ -2,9 +2,11 @@
 
 exports[`NewsTabItem Snapshot - Default 1`] = `
 <article
-  className="layout"
+  className="article"
 >
-  <h4>
+  <h4
+    className="title"
+  >
     <a
       href="https://www.theguardian.com/media/2020/jan/06/vat-ruling-on-times-digital-edition-could-save-news-uk-millions"
       rel="noopener noreferrer"
@@ -13,7 +15,9 @@ exports[`NewsTabItem Snapshot - Default 1`] = `
       VAT ruling on Times digital edition could save News UK millions
     </a>
   </h4>
-  <p>
+  <p
+    className="description"
+  >
     Rupert Murdoch’s firm satisfies tax tribunal that subscriptions should be zero-rated
   </p>
 </article>

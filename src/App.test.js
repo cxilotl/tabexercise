@@ -28,7 +28,7 @@ describe('Given a page with a tabbed component, it', () => {
     beforeEach(() => {
       serverMock = new MockAdapter(axios);
       // https://content.guardianapis.com/search?show-fields=trailText&q=uk-news&api-key=9wur7sdh84azzazdt3ye54k4
-      newsUrl = /content\.guardianapis\.com\/search\?q=uk-news/i;
+      newsUrl = /content\.guardianapis\.com\/search\?/i;
       serverMock.onGet(newsUrl).reply(200, ukNews);
     });
 

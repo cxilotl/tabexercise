@@ -16,7 +16,7 @@ Array [
       role="navigation"
     >
       <ul
-        className="tabLayout"
+        className="tabNavLayout"
       >
         <li>
           <h3>
@@ -51,7 +51,9 @@ Array [
       </ul>
     </nav>
     <section>
-      <ol />
+      <ol
+        className="tabLayout"
+      />
     </section>
   </main>,
 ]
