@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Application snapshot 1`] = `
+Array [
+  <header>
+    <h1>
+      Tabbed Component
+    </h1>
+  </header>,
+  <main
+    className="app"
+  >
+    <h3>
+      UK News
+    </h3>
+    <section />
+  </main>,
+]
+`;
