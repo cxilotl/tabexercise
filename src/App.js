@@ -12,11 +12,11 @@ const generateNewsList = newsList => {
       <>
         {
           newsList.map((newsItem, index) => {
-            const newsTitle = newsItem.webTitle;
+            const newsTitle = `${index+1}. ${newsItem.webTitle}`;
             const newsLink = newsItem.webUrl;
             const newsDescription = newsItem.fields.trailText || '';
             return (
-              <li key={index}>
+              <li key={index} className={ cssStyles.tabItem }>
                 <NewsTabItem
                   title={ newsTitle }
                   description={ newsDescription }
@@ -83,14 +83,14 @@ function App() {
       </header>
       <main className={ cssStyles.main }>
         <nav role="navigation">
-          <ul className={ cssStyles.tabLayout }>
+          <ul className={ cssStyles.tabNavLayout }>
             <li><h3><a href="/uk-news" onClick={ handleNewsSelection }>UK News</a></h3></li>
             <li><h3><a href="/football" onClick={ handleNewsSelection }>Football</a></h3></li>
             <li><h3><a href="/travel" onClick={ handleNewsSelection }>Travel</a></h3></li>
           </ul>
         </nav>
         <section>
-          <ol>
+          <ol className={ cssStyles.tabLayout }>
             { newsContent }
           </ol>
         </section>

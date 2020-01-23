@@ -4,9 +4,9 @@ import cssStyles from './NewsTabItem.module.scss';
 
 const NewsTabItem = ({ title, description, linkURL }) => {
   return (
-    <article className={ cssStyles.layout }>
-      <h4><a href={ linkURL } target="_blank" rel="noopener noreferrer">{ title }</a></h4>
-      <p>{ description }</p>
+    <article className={ cssStyles.article }>
+      <h4 className={ cssStyles.title }><a href={ linkURL } target="_blank" rel="noopener noreferrer">{ title }</a></h4>
+      <p className={ cssStyles.description }>{ description }</p>
     </article>
   );
 };
