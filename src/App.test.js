@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { render, wait } from '@testing-library/react';
-// import { act } from 'react-dom/test-utils';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 

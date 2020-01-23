@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewsTabItem Snapshot - Default 1`] = `
+<article
+  className="layout"
+>
+  <h4>
+    <a
+      href="https://www.theguardian.com/media/2020/jan/06/vat-ruling-on-times-digital-edition-could-save-news-uk-millions"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      VAT ruling on Times digital edition could save News UK millions
+    </a>
+  </h4>
+  <p>
+    Rupert Murdoch’s firm satisfies tax tribunal that subscriptions should be zero-rated
+  </p>
+</article>
+`;

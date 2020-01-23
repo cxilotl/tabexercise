@@ -1,7 +1,7 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
 import cssStyles from './App.module.scss';
+import NewsTabItem from "./components/NewsTabItem/NewsTabItem";
 
 const apiKey = '9wur7sdh84azzazdt3ye54k4';
 
@@ -13,14 +13,16 @@ const generateNewsList = newsList => {
         {
           newsList.map((newsItem, index) => {
             const newsTitle = newsItem.webTitle;
+            const newsLink = newsItem.webUrl;
             const newsDescription = newsItem.fields.trailText || '';
             return (
-              <Fragment key={index}>
-                <article>
-                  <h4>{ newsTitle }</h4>
-                  <p>{ newsDescription }</p>
-                </article>
-              </Fragment>
+              <li key={index}>
+                <NewsTabItem
+                  title={ newsTitle }
+                  description={ newsDescription }
+                  linkURL={ newsLink }
+                />
+              </li>
             );
           })
         }
@@ -31,15 +33,20 @@ const generateNewsList = newsList => {
 };
 
 function App() {
-  const searchType = 'uk-news';
-  // const additionalElements = 'image';
-  const additionalFields = 'trailText';
-  const [news, setNews] = useState([]);
+  const [ selectedNewsTab, setSelectedNewsTab ] = useState('uk-new');
+  const handleNewsSelection = (clickEvent) => {
+    clickEvent.preventDefault();
+    const newsElement = clickEvent.currentTarget;
+    const newsLink = newsElement.getAttribute('href').replace(/^\//, '');
+    console.log('newsLink: ', newsLink);
+    setSelectedNewsTab(newsLink);
+  };
 
+  const [ news, setNews ] = useState([]);
   useEffect(  () => {
-    // const url = `https://content.guardianapis.com/search?q=${searchType}&order-by=newest&show-fields=${additionalFields}&show-elements=${additionalElements}&api-key=${apiKey}`;
-    const url = `https://content.guardianapis.com/search?q=${searchType}&order-by=newest&show-fields=${additionalFields}&api-key=${apiKey}`;
-    const fetchNews = async () => {
+    const fetchNews = async (searchType) => {
+      const additionalFields = 'trailText';
+      const url = `https://content.guardianapis.com/search?q=${searchType}&order-by=newest&show-fields=${additionalFields}&api-key=${apiKey}`;
       return axios({
         method: 'get',
         url,
@@ -50,7 +57,8 @@ function App() {
         timeout: 20000,
       });
     };
-    fetchNews()
+
+    fetchNews(selectedNewsTab)
       .then(data => {
         if (data.status === 200) {
           const response = data.data.response;
@@ -65,16 +73,26 @@ function App() {
         console.log('ERR', err);
       });
 
-  }, []);
+  }, [ selectedNewsTab ]);
+
+  const newsContent = generateNewsList(news);
   return (
     <>
-      <header>
+      <header className={ cssStyles.header }>
         <h1>Tabbed Component</h1>
       </header>
-      <main className={ cssStyles.app }>
-        <h3>UK News</h3>
+      <main className={ cssStyles.main }>
+        <nav role="navigation">
+          <ul className={ cssStyles.tabLayout }>
+            <li><h3><a href="/uk-news" onClick={ handleNewsSelection }>UK News</a></h3></li>
+            <li><h3><a href="/football" onClick={ handleNewsSelection }>Football</a></h3></li>
+            <li><h3><a href="/travel" onClick={ handleNewsSelection }>Travel</a></h3></li>
+          </ul>
+        </nav>
         <section>
-          { generateNewsList(news) }
+          <ol>
+            { newsContent }
+          </ol>
         </section>
       </main>
     </>

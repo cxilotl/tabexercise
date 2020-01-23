@@ -2,18 +2,57 @@
 
 exports[`Application snapshot 1`] = `
 Array [
-  <header>
+  <header
+    className="header"
+  >
     <h1>
       Tabbed Component
     </h1>
   </header>,
   <main
-    className="app"
+    className="main"
   >
-    <h3>
-      UK News
-    </h3>
-    <section />
+    <nav
+      role="navigation"
+    >
+      <ul
+        className="tabLayout"
+      >
+        <li>
+          <h3>
+            <a
+              href="/uk-news"
+              onClick={[Function]}
+            >
+              UK News
+            </a>
+          </h3>
+        </li>
+        <li>
+          <h3>
+            <a
+              href="/football"
+              onClick={[Function]}
+            >
+              Football
+            </a>
+          </h3>
+        </li>
+        <li>
+          <h3>
+            <a
+              href="/travel"
+              onClick={[Function]}
+            >
+              Travel
+            </a>
+          </h3>
+        </li>
+      </ul>
+    </nav>
+    <section>
+      <ol />
+    </section>
   </main>,
 ]
 `;
